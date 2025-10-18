@@ -28,6 +28,8 @@ Wide Research的核心在于它的“宽上下文”的策略。它用了分而�
 
 我们使用这个repo可以完美完成这个任务。使用这样的prompt：
 
+> 阅读 wide_research_prompt_cn.md, 并且使用 Wide Research 来完成下面的任务：
+> 
 > https://www.cnblogs.com/xinz/p/19139660
 > 
 > 我们在上一门软件工程课的时候录制了一个作业，让学生在 blog 里面对软件工程进行提问。这个页面是一个 AI 总结，但是里面基本上全是幻觉，只有 URL 是正确的。我现在就想看下面几件事情：
@@ -43,8 +45,6 @@ Wide Research的核心在于它的“宽上下文”的策略。它用了分而�
 > 第五，你再写一个程序来统计最常见的几个标签。
 > 
 > 第六，你再根据上面所有的内容汇总整理成一个单网页的中文的有深度的分析。它的根本目标是让人一看就知道学生最关心的问题是什么，同时还能点进文章进行核实。要着重强调思维深度，给人惊喜感，让人觉得有顿见，又能轻松验证它的正确性。对于从 Wide Research 中间拿到的结果不要进行缩略，直接放到最终报告里。最终结果发布出来。
->
-> wide_research_prompt_cn.md
 
 注意最后的md文件，这就是repo里面的prompt文件。
 
@@ -160,7 +160,7 @@ The repository supplies reusable Wide Research scaffolding:
    - In experimental environments, set `/approve` to `Full Access` so Codex doesn’t pause for frequent confirmations.
 
 2. **Optional MCP servers**
-   - Install optional servers to expand Codex’s abilities. If you need intensive web research, [Tavily](https://www.tavily.com/) greatly speeds things up, though it is a paid service.
+   - You can run the commands below to install optional MCP servers. They are not required—skip them if installation fails—but they expand Codex’s abilities. For intensive web research, [Tavily](https://www.tavily.com/) greatly speeds things up, though it is a paid service.
      ```bash
       codex mcp add playwright -- npx @playwright/mcp@latest
       codex mcp add chrome-devtools -- npx chrome-devtools-mcp@latest
