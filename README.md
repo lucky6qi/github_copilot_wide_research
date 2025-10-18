@@ -4,7 +4,7 @@
 
 ## 中文版
 
-这个repo给[Codex CLI](https://github.com/openai/codex/)加上了Wide Research的功能，大幅增强了它的能力（下文有具体示例）。
+这个repo给[Codex CLI](https://github.com/openai/codex/)加上了Wide Research的功能，大幅增强了它的能力（下文有具体示例）。更详细的解析与实战经验可参考博客：[https://yage.ai/wide-research.html](https://yage.ai/wide-research.html)。
 
 ### 1. 背景：Manus的Wide Research
 
@@ -89,6 +89,8 @@ Codex收到这个任务以后首先会做一个计划，让用户确认。确认
 --------------------------------------------------------------------------------
 
 ## English Version
+
+For a more detailed walkthrough and rationale, see the companion blog post: [https://yage.ai/wide-research-en.html](https://yage.ai/wide-research-en.html).
 
 This repository adds Wide Research capabilities to the [Codex CLI](https://github.com/openai/codex/), dramatically boosting what it can achieve (see below for a concrete example).
 
