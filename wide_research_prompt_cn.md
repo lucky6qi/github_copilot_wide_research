@@ -41,7 +41,7 @@
         - 在prompt中明确，所有联网需求必须优先调用 MCP（优先 tavily_search / tavily_extract）。只有在实在没办法的时候才能curl/wget。不使用plan工具与人工交互等待。
         - 非经用户要求不要传入 `--model`，默认附带 `-c model_reasoning_effort="low"`；仅在结果质量低劣时再提高推理档位。
         - 指定输出文件路径（如 `child_outputs/<id>.md`）。
-        - 明确禁止使用已废弃参数（如 `--prompt-file`、`--mcp`、`--name`），并提醒先执行 `codex exec --help` 获取最新说明。推荐引用如下调用模板：
+        - 明确禁止使用已废弃参数（如 `--prompt-file`、`--mcp`、`--name`），并提醒先执行 `codex exec --help` 获取最新说明。推荐引用如下调用模板（不涉及并行处理，只演示参数）：
          ```bash
          timeout 600 codex exec \
             --sandbox workspace-write \
@@ -50,7 +50,7 @@
             - <"$prompt_file"
          ```
         - 根据任务规模设置 `timeout_ms`：小任务先给 5 分钟，较大任务可放宽到最多 15 分钟，并在脚本层面用 `timeout` 命令做兜底。首次命中 5 分钟超时时，结合任务实际判断是否需要拆分或调整参数再重试；若 15 分钟仍未完成，视作 prompt 或流程需要排查。
-        - 推荐以循环 + 后台任务（或队列控制）实现并行，确保 prompt 文本不会因命令行长度受限导致失败；如确需 `xargs`/GNU Parallel，务必先在小规模上验证参数展开。默认并行 8 个任务，可根据硬件或配额调整。
+        - 小规模任务（<8个）推荐以循环 + 后台任务（或队列控制）实现并行，确保 prompt 文本不会因命令行长度受限导致失败；大规模任务需 `xargs`/GNU Parallel，务必先在小规模上验证参数展开。默认并行 8 个任务，可根据硬件或配额调整。不要串行一个个跑，不要get around，比如主进程随便搜搜。
         - 捕获每个子进程的退出码，将日志写入工作目录，并通过 `stdbuf -oL -eL codex exec … | tee logs/<id>.log` 等方式实时刷新，方便 `tail -f` 观察进度。
         - 注意 `codex exec` 不提供 `--output`、`--log-level` 等参数；输出需通过管道写入文件，并在多段管道后使用正确的 `PIPESTATUS` 索引确认退出码。运行前可执行 `codex exec --help` 复核可用参数。
    - 数据量足够时，主控尽量不亲自执行下载、解析等重活；这些步骤应通过子进程（Codex）完成，主控负责准备 prompt、模板与环境。
