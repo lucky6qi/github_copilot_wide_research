@@ -14,6 +14,7 @@ When a user mentions “Wide Research” or references this file, load these ins
 - The final deliverable must be a polished, insight-driven document—ideally structured as “Executive Summary → Timeline/Key Facts → Thematic Analysis → Risks & Next Steps.” Never append raw child Markdown directly to customer-facing output.
 - Preserve raw child artefacts (e.g., `aggregated_raw.md`) separately for internal auditing, referencing their insights within the main report rather than copy-pasting wholesale.
 - Perform edits incrementally: refine section by section, do not wipe and rewrite entire files in a single shot. After each change, re-validate citations, figures, and surrounding context so every adjustment remains traceable.
+- Before release, run a “two-step QA”: (1) confirm the final report was assembled through staged, chapter-by-chapter edits; if you detect a single-pass generation, roll back and rebuild the draft in iterative sections. (2) Judge the depth of the narrative; if it still feels thin, diagnose whether the child outputs lack detail or the synthesis collapsed them—remedy by rerunning/augmenting child tasks in the former case, or by enriching the final edit in the latter until it meets the required level of detail.
 
 ## Detailed Procedure
 0. **Pre-run planning & reconnaissance (mandatory)**
