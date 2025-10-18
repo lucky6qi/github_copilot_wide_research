@@ -96,7 +96,7 @@
 - **完整理解再总结**：在需要总结或提炼内容时，必须先处理完整原文，不得简单截取固定长度（如前 500 个字符）。可编写脚本进行全文解析、提取关键句或生成要点，但不得依赖机械截断。
 - **临时目录隔离**：除最终交付物外的中间产物（脚本日志、解析结果、缓存、调试输出等）应存放在工作目录下的临时子目录（如 `tmp/`、`raw/`、`cache/`），必要时在流程结束后按需清理。
 - **搜索服务优先级**：在需要大量检索前，先查看可用的 MCP server（例如运行 `codex mcp list`）。若存在 `tavily-remote`，必须优先使用 Tavily 的搜索工具；仅在缺少 Tavily 时才退回 Codex 自带的 search 能力。
-- **Tavily 检索参数**：调用 Tavily 时，将 `max_results` 默认设为 6（若任务覆盖面不足，可提升至 10），启用 `search_depth="advanced"`，并设置 `include_answer="advanced"` 获取经 Tavily 聚合的摘要；如需图像可加上 `include_images`/`include_image_descriptions`。避免使用 `include_raw_content` 以免返回超大原文，`include_answer` 参数必须写成字符串 `"advanced"`，不要使用布尔值。
+- **Tavily 检索参数**：调用 Tavily 时，将 `max_results` 默认设为 6（若任务覆盖面不足，可提升至 10），并启用 `search_depth="advanced"`。如需图像可加上 `include_images`/`include_image_descriptions`。避免使用 `include_raw_content` 以免返回超大原文。
 - **图像检索**：Tavily MCP server 支持图像搜索；除非用户明确要求“仅限纯文本”，否则应开启图像检索，并将相关图像结果与文本一并呈现给用户。
 
 ## 通用经验与最佳实践
